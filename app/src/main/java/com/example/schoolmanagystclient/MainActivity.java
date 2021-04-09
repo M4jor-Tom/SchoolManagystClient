@@ -10,6 +10,10 @@ import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
+    MaterialButton _promotionsButton;
+    MaterialButton _studentsButton;
+    ListView _promotionsListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -25,5 +29,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v)
     {
 
+    }
+
+    private MaterialButton getPromotionsButton()
+    {
+        return _promotionsButton;
+    }
+
+    private void setPromotionsButton(MaterialButton promotionsButton)
+    {
+        _promotionsButton = promotionsButton;
+    }
+
+    private MaterialButton getStudentsButton()
+    {
+        return _studentsButton;
+    }
+
+    private void setStudentsButton(MaterialButton studentsButton)
+    {
+        _studentsButton = studentsButton;
+    }
+
+    private ListView getPromotionListView()
+    {
+        return _promotionsListView;
+    }
+
+    private void setPromotionsListView(ListView promotionsListView)
+    {
+        _promotionsListView = promotionsListView;
     }
 }
