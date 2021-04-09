@@ -18,7 +18,12 @@
         </activity>
         <activity
             android:name=".PromotionActivity"
-            android:label="@string/app_name">
+            android:label="@string/PromotionActivityTitle">
+
+        </activity>
+        <activity
+            android:name=".StudentActivity"
+            android:label="@string/StudentActivityTitle">
 
         </activity>
     </application>
