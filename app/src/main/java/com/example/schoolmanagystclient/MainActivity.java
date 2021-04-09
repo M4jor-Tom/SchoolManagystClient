@@ -2,13 +2,15 @@ package com.example.schoolmanagystclient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
 import com.google.android.material.button.MaterialButton;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener
+public class MainActivity extends AppCompatActivity
 {
     MaterialButton _promotionsButton;
     MaterialButton _studentsButton;
@@ -27,14 +29,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setPromotionsListView((ListView)findViewById(R.id.promotionsListView));
 
         //Setting of interactive elements' OnClickListeners
-        getPromotionsButton().setOnClickListener(this);
-        getStudentsButton().setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v)
-    {
-
+        getPromotionsButton().setOnClickListener(
+                new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        Intent intent = new Intent(MainActivity.this, PromotionActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        /*getStudentsButton().setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (getPromotionsButton().equals(v)) {
+                            Intent intent = new Intent(MainActivity.this, PromotionActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
+                );*/
     }
 
     private MaterialButton getPromotionsButton()
