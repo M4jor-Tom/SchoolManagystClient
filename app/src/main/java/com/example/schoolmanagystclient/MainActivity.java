@@ -17,13 +17,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        //Generic instructions
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Finding interactive elements
         setPromotionsButton((MaterialButton)findViewById(R.id.promotionsButton));
         setStudentsButton((MaterialButton)findViewById(R.id.studentsButton));
         setPromotionsListView((ListView)findViewById(R.id.promotionsListView));
 
+        //Setting of interactive elements' OnClickListeners
         getPromotionsButton().setOnClickListener(this);
         getStudentsButton().setOnClickListener(this);
     }
