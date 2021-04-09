@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setPromotionsButton((MaterialButton)findViewById(R.id.promotionsButton));
         setStudentsButton((MaterialButton)findViewById(R.id.studentsButton));
         setPromotionsListView((ListView)findViewById(R.id.promotionsListView));
+
+        getPromotionsButton().setOnClickListener(this);
+        getStudentsButton().setOnClickListener(this);
     }
 
     @Override
