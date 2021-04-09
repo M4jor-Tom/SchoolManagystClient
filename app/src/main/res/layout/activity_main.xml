@@ -17,13 +17,13 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Promotions"/>
+        android:text="@string/main_option_promotions"/>
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Students"/>
+        android:text="@string/main_option_students"/>
     <TextView
-        android:text="Students of promotion"
+        android:text="@string/main_option_students_of_promotion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <ListView
