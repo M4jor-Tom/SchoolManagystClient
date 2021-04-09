@@ -40,17 +40,15 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
         );
-        /*getStudentsButton().setOnClickListener(
+        getStudentsButton().setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (getPromotionsButton().equals(v)) {
-                            Intent intent = new Intent(MainActivity.this, PromotionActivity.class);
-                            startActivity(intent);
-                        }
+                        Intent intent = new Intent(MainActivity.this, StudentActivity.class);
+                        startActivity(intent);
                     }
                 }
-                );*/
+        );
     }
 
     private MaterialButton getPromotionsButton()

@@ -3,4 +3,6 @@
     <string name="main_option_promotions">Promotions</string>
     <string name="main_option_students">Students</string>
     <string name="main_option_students_of_promotion">Students of Promotion</string>
+    <string name="PromotionActivityTitle">Promotions</string>
+    <string name="StudentActivityTitle">Students</string>
 </resources>
