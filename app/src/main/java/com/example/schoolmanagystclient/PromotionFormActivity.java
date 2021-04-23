@@ -1,6 +1,8 @@
 package com.example.schoolmanagystclient;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,8 @@ import com.google.android.material.button.MaterialButton;
 
 public class PromotionFormActivity extends AppCompatActivity
 {
+    private final static String TAG = "PromotionFormActivity";
+
     private EditText _promotionAcronymEditText;
     private EditText _promotionEntitledEditText;
 
@@ -25,6 +29,18 @@ public class PromotionFormActivity extends AppCompatActivity
         setPromotionAcronymEditText((EditText)findViewById(R.id.promotionAcronymEditText));
         setPromotionEntitledEditText((EditText)findViewById(R.id.promotionEntitledEditText));
         setCreateButton((MaterialButton)findViewById(R.id.promotionCreateButton));
+
+        //Setting onclick to button
+        getCreateButton().setOnClickListener(
+                new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        Log.i(TAG, "Promotion shall be created now");
+                    }
+                }
+        );
     }
 
     public EditText getPromotionAcronymEditText()
