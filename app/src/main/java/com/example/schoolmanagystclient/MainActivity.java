@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity
 {
     MaterialButton _promotionsButton;
     MaterialButton _studentsButton;
-    ListView _promotionsListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,7 +25,6 @@ public class MainActivity extends AppCompatActivity
         //Finding interactive elements
         setPromotionsButton((MaterialButton)findViewById(R.id.promotionsButton));
         setStudentsButton((MaterialButton)findViewById(R.id.studentsButton));
-        setPromotionsListView((ListView)findViewById(R.id.promotionsListView));
 
         //Setting of interactive elements' OnClickListeners
         getPromotionsButton().setOnClickListener(
@@ -69,15 +67,5 @@ public class MainActivity extends AppCompatActivity
     private void setStudentsButton(MaterialButton studentsButton)
     {
         _studentsButton = studentsButton;
-    }
-
-    private ListView getPromotionListView()
-    {
-        return _promotionsListView;
-    }
-
-    private void setPromotionsListView(ListView promotionsListView)
-    {
-        _promotionsListView = promotionsListView;
     }
 }
