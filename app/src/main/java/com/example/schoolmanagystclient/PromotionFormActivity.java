@@ -37,7 +37,12 @@ public class PromotionFormActivity extends AppCompatActivity
                     @Override
                     public void onClick(View v)
                     {
-                        Log.i(TAG, "Promotion shall be created now");
+                        Promotion promotion = new Promotion(
+                                getPromotionEntitledEditText().getText().toString(),
+                                getPromotionAcronymEditText().getText().toString()
+                        );
+                        Log.i(TAG, promotion + " shall be created now");
+                        MainActivity.getLogicInterface().addPromotion(promotion);
                     }
                 }
         );
