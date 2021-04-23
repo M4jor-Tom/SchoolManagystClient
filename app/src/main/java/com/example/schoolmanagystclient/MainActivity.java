@@ -12,6 +12,8 @@ import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity
 {
+    LogicInterface _logicInterface;
+
     MaterialButton _promotionsButton;
     MaterialButton _studentsButton;
 
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity
         //Generic instructions
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //N-tier architecture
+        setLogicInterface(new Logic());
 
         //Finding interactive elements
         setPromotionsButton((MaterialButton)findViewById(R.id.promotionsButton));
@@ -48,6 +53,16 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
         );
+    }
+
+    public LogicInterface getLogicInterface()
+    {
+        return _logicInterface;
+    }
+
+    public void setLogicInterface(LogicInterface logicInterface)
+    {
+        _logicInterface = logicInterface;
     }
 
     private MaterialButton getPromotionsButton()
