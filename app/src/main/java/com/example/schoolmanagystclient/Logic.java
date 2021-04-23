@@ -13,6 +13,18 @@ public class Logic implements LogicInterface
         setStudents(new ArrayList<>());
     }
 
+    @Override
+    public void addStudent(Student student)
+    {
+        getStudents().add(student);
+    }
+
+    @Override
+    public void addPromotion(Promotion promotion)
+    {
+        getPromotions().add(promotion);
+    }
+
     public ArrayList<Promotion> getPromotions()
     {
         return _promotions;
