@@ -33,7 +33,11 @@ public class StudentFormActivity extends AppCompatActivity
         setCreateButton((MaterialButton)findViewById(R.id.studentCreateButton));
 
         //FullFilling promotions
-
+        getPromotionSpinner().setAdapter(new PromotionAdapter(
+                this,
+                MainActivity.getLogicInterface().getPromotions()
+            )
+        );
 
         //Setting onclick to button
         getCreateButton().setOnClickListener(
