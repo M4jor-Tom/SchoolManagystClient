@@ -22,8 +22,8 @@ public class PromotionActivity extends AppCompatActivity
         setContentView(R.layout.activity_promotions);
 
         //Finding interactive elements
-        setPromotionsListView((ListView)findViewById(R.id.promotionsListView));
         setPromotionFormButton((MaterialButton)findViewById(R.id.promotionFormButton));
+        setPromotionsListView((ListView)findViewById(R.id.promotionsListView));
 
         //Setting of interactive elements' OnClickListeners
         getPromotionFormButton().setOnClickListener(

@@ -22,8 +22,8 @@ public class StudentActivity extends AppCompatActivity
         setContentView(R.layout.activity_students);
 
         //Finding interactive elements
-        setStudentsListView((ListView)findViewById(R.id.studentsListView));
         setStudentFormButton((MaterialButton)findViewById(R.id.studentFormButton));
+        setStudentsListView((ListView)findViewById(R.id.studentsListView));
 
         //Setting of interactive elements' OnClickListeners
         getStudentFormButton().setOnClickListener(
