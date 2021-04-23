@@ -11,4 +11,6 @@
     <string name="StudentFormActivityTitle">Student Form</string>
     <string name="firstname_placeholder">Firstname</string>
     <string name="lastname_placeholder">lastname</string>
+    <string name="acronym_placeholder">Acronym</string>
+    <string name="entitled_placeholder">Entitled</string>
 </resources>

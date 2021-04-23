@@ -20,6 +20,11 @@ public class PromotionFormActivity extends AppCompatActivity
         //Generic instructions
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_promotion_form);
+
+        //Finding interactive elements
+        setPromotionAcronymEditText((EditText)findViewById(R.id.promotionAcronymEditText));
+        setPromotionEntitledEditText((EditText)findViewById(R.id.promotionEntitledEditText));
+        setCreateButton((MaterialButton)findViewById(R.id.promotionCreateButton));
     }
 
     public EditText getPromotionAcronymEditText()

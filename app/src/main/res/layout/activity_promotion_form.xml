@@ -5,4 +5,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/promotionAcronymEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/acronym_placeholder"/>
+    <EditText
+        android:id="@+id/promotionEntitledEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/entitled_placeholder"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/promotionCreateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"/>
 </LinearLayout>
