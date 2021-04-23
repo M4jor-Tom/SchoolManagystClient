@@ -42,7 +42,12 @@ public class StudentFormActivity extends AppCompatActivity
                     @Override
                     public void onClick(View v)
                     {
-                        Log.i(TAG, "Student shall be created now");
+                        Student student = new Student(
+                                getStudentFirstNameEditText().getText().toString(),
+                                getStudentLastNameEditText().getText().toString()
+                        );
+                        Log.i(TAG, student + " shall be created now");
+                        MainActivity.getLogicInterface().addStudent(student);
                     }
                 }
         );
