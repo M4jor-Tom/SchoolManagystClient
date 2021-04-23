@@ -15,9 +15,11 @@ public class StudentActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        //Generic instructions
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students);
 
+        //Finding interactive elements
         setStudentsListView((ListView)findViewById(R.id.studentsListView));
         setStudentFormButton((MaterialButton)findViewById(R.id.studentFormButton));
     }

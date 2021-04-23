@@ -15,9 +15,11 @@ public class PromotionActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        //Generic instructions
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_promotions);
 
+        //Finding interactive elements
         setPromotionsListView((ListView)findViewById(R.id.promotionsListView));
         setPromotionFormButton((MaterialButton)findViewById(R.id.promotionFormButton));
     }
