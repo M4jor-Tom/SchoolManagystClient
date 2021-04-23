@@ -11,19 +11,23 @@ public class Promotion
     private ArrayList<Student> _students;
 
 
-    public Promotion(String entitled, String acronym, ArrayList<Student> students)
+    public Promotion(long id, String entitled, String acronym, ArrayList<Student> students)
     {
+        setId(id);
         setEntitled(entitled);
         setAcronym(acronym);
         setStudents(new ArrayList<>());
         setStudents(students);
     }
 
+    public Promotion(String entitled, String acronym, ArrayList<Student> students)
+    {
+        this(-1, entitled, acronym, students);
+    }
+
     public Promotion(String entitled, String acronym)
     {
-        setEntitled(entitled);
-        setAcronym(acronym);
-        setStudents(new ArrayList<>());
+        this(entitled, acronym, new ArrayList<>());
     }
 
     public Promotion()
