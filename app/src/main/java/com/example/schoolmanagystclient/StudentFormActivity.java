@@ -39,6 +39,10 @@ public class StudentFormActivity extends AppCompatActivity
             )
         );
 
+        //If promotionIndex is set, use it to locate the spinner default position
+        if(getIntent().hasExtra("promotionIndex"))
+            getPromotionSpinner().setSelection(getIntent().getIntExtra("promotionIndex", 0));
+
         //Setting onclick to button
         getCreateButton().setOnClickListener(
                 new View.OnClickListener()
