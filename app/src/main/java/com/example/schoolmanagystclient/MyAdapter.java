@@ -18,6 +18,18 @@ abstract public class MyAdapter<Entity> extends BaseAdapter
         setEntities(entities);
     }
 
+    @Override
+    public int getCount()
+    {
+        return getEntities().size();
+    }
+
+    @Override
+    public Object getItem(int position)
+    {
+        return getEntities().get(position);
+    }
+
     //Use this method in getView()
     protected View selectView(View convertView, int layoutId)
     {

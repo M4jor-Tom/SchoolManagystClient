@@ -24,18 +24,6 @@ public class StudentsAdapter extends MyAdapter<Student>
     }
 
     @Override
-    public int getCount()
-    {
-        return getStudents().size();
-    }
-
-    @Override
-    public Object getItem(int position)
-    {
-        return getStudents().get(position);
-    }
-
-    @Override
     public long getItemId(int position)
     {
         return getStudents().get(position).getId();
