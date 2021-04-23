@@ -7,4 +7,5 @@
     <string name="StudentActivityTitle">Students</string>
     <string name="promotion_form_button">Add promotion</string>
     <string name="student_form_button">Add student</string>
+    <string name="StudentFormActivityTitle">Student Form</string>
 </resources>

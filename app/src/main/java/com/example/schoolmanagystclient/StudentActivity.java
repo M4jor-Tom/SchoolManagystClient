@@ -1,6 +1,8 @@
 package com.example.schoolmanagystclient;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,19 @@ public class StudentActivity extends AppCompatActivity
         //Finding interactive elements
         setStudentsListView((ListView)findViewById(R.id.studentsListView));
         setStudentFormButton((MaterialButton)findViewById(R.id.studentFormButton));
+
+        //Setting of interactive elements' OnClickListeners
+        getStudentFormButton().setOnClickListener(
+                new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        Intent intent = new Intent(StudentActivity.this, StudentFormActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
     }
 
     public ListView getStudentsListView()

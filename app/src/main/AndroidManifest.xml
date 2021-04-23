@@ -26,6 +26,12 @@
             android:label="@string/StudentActivityTitle">
 
         </activity>
+
+        <activity
+            android:name=".StudentFormActivity"
+            android:label="@string/StudentFormActivityTitle">
+
+        </activity>
     </application>
 
 </manifest>
