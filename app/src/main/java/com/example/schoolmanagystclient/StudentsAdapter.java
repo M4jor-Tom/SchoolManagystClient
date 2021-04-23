@@ -18,15 +18,10 @@ public class StudentsAdapter extends MyAdapter<Student>
 
     }
 
-    private List<Student> getStudents()
-    {
-        return getEntities();
-    }
-
     @Override
     public long getItemId(int position)
     {
-        return getStudents().get(position).getId();
+        return getEntities().get(position).getId();
     }
 
     @Override
@@ -36,7 +31,7 @@ public class StudentsAdapter extends MyAdapter<Student>
         View view = selectView(convertView, R.layout.layout_student_option);
 
         //Getting student
-        Student student = getStudents().get(position);
+        Student student = getEntities().get(position);
 
         //Getting TextViews in layout
         TextView firstName = (TextView)view.findViewById(R.id.studentFirstNameTextViewOption);
