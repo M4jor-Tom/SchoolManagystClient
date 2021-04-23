@@ -7,10 +7,16 @@ public class Student
             _firstName,
             _lastName;
 
-    public Student(String firstName, String lastName)
+    public Student(long id, String firstName, String lastName)
     {
+        setId(id);
         setFirstName(firstName);
         setLastName(lastName);
+    }
+
+    public Student(String firstName, String lastName)
+    {
+        this(-1, firstName, lastName);
     }
 
     public Student()
