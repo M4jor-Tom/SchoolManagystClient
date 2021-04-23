@@ -1,6 +1,8 @@
 package com.example.schoolmanagystclient;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -10,6 +12,8 @@ import com.google.android.material.button.MaterialButton;
 
 public class StudentFormActivity extends AppCompatActivity
 {
+    private final static String TAG = "StudentFormActivity";
+
     private EditText _studentFirstNameEditText;
     private EditText _studentLastNameEditText;
     private Spinner _promotionSpinner;
@@ -29,7 +33,19 @@ public class StudentFormActivity extends AppCompatActivity
         setCreateButton((MaterialButton)findViewById(R.id.studentCreateButton));
 
         //FullFilling promotions
-        
+
+
+        //Setting onclick to button
+        getCreateButton().setOnClickListener(
+                new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        Log.i(TAG, "Student shall be created now");
+                    }
+                }
+        );
     }
 
     public EditText getStudentFirstNameEditText()
