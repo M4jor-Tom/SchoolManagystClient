@@ -25,6 +25,15 @@ public class PromotionActivity extends AppCompatActivity
         setPromotionFormButton((MaterialButton)findViewById(R.id.promotionFormButton));
         setPromotionsListView((ListView)findViewById(R.id.promotionsListView));
 
+
+        //Assigning adapter
+        getPromotionsListView().setAdapter(
+                new PromotionAdapter(
+                        this,
+                        MainActivity.getLogicInterface().getPromotions()
+                )
+        );
+
         //Setting of interactive elements' OnClickListeners
         getPromotionFormButton().setOnClickListener(
                 new View.OnClickListener()
