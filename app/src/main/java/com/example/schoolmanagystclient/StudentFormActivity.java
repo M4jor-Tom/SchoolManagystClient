@@ -1,16 +1,74 @@
 package com.example.schoolmanagystclient;
 
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
+
 public class StudentFormActivity extends AppCompatActivity
 {
+    private EditText _studentFirstNameEditText;
+    private EditText _studentLastNameEditText;
+    private Spinner _promotionSpinner;
+    private MaterialButton _createButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         //Generic instructions
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.student_form_activity);
+        setContentView(R.layout.activity_student_form);
+
+        //Finding interactive elements
+        setStudentFirstNameEditText((EditText)findViewById(R.id.studentFirstNameEditText));
+        setStudentLastNameEditText((EditText)findViewById(R.id.studentLastNameEditText));
+        setPromotionSpinner((Spinner)findViewById(R.id.promotionSpinner));
+        setCreateButton((MaterialButton)findViewById(R.id.studentCreateButton));
+
+        //FullFilling promotions
+        
+    }
+
+    public EditText getStudentFirstNameEditText()
+    {
+        return _studentFirstNameEditText;
+    }
+
+    public void setStudentFirstNameEditText(EditText studentFirstNameEditText)
+    {
+        _studentFirstNameEditText = studentFirstNameEditText;
+    }
+
+    public EditText getStudentLastNameEditText()
+    {
+        return _studentLastNameEditText;
+    }
+
+    public void setStudentLastNameEditText(EditText studentLastNameEditText)
+    {
+        _studentLastNameEditText = studentLastNameEditText;
+    }
+
+    public Spinner getPromotionSpinner()
+    {
+        return _promotionSpinner;
+    }
+
+    public void setPromotionSpinner(Spinner promotionSpinner)
+    {
+        _promotionSpinner = promotionSpinner;
+    }
+
+    public MaterialButton getCreateButton()
+    {
+        return _createButton;
+    }
+
+    public void setCreateButton(MaterialButton createButton)
+    {
+        _createButton = createButton;
     }
 }

@@ -11,6 +11,6 @@ public class PromotionFormActivity extends AppCompatActivity
     {
         //Generic instructions
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.promotion_form_activity);
+        setContentView(R.layout.activity_promotion_form);
     }
 }
