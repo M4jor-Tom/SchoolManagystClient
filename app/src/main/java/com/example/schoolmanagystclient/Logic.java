@@ -25,6 +25,7 @@ public class Logic implements LogicInterface
         getPromotions().add(promotion);
     }
 
+    @Override
     public ArrayList<Promotion> getPromotions()
     {
         return _promotions;
@@ -35,6 +36,7 @@ public class Logic implements LogicInterface
         _promotions = promotions;
     }
 
+    @Override
     public ArrayList<Student> getStudents()
     {
         return _students;
