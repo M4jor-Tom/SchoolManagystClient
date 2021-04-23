@@ -12,10 +12,10 @@ import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity
 {
-    LogicInterface _logicInterface;
+    private LogicInterface _logicInterface;
 
-    MaterialButton _promotionsButton;
-    MaterialButton _studentsButton;
+    private MaterialButton _promotionsButton;
+    private MaterialButton _studentsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
