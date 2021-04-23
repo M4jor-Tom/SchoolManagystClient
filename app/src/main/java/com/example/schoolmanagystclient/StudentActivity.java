@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class StudentActivity extends AppCompatActivity
 {
-    ListView _studentsListView;
+    private ListView _studentsListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
