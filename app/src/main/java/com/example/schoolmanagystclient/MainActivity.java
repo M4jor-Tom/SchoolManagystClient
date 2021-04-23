@@ -12,7 +12,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity
 {
-    private LogicInterface _logicInterface;
+    private static LogicInterface _logicInterface;
 
     private MaterialButton _promotionsButton;
     private MaterialButton _studentsButton;
@@ -55,12 +55,12 @@ public class MainActivity extends AppCompatActivity
         );
     }
 
-    public LogicInterface getLogicInterface()
+    public static LogicInterface getLogicInterface()
     {
         return _logicInterface;
     }
 
-    public void setLogicInterface(LogicInterface logicInterface)
+    public static void setLogicInterface(LogicInterface logicInterface)
     {
         _logicInterface = logicInterface;
     }
