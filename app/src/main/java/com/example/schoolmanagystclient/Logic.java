@@ -82,21 +82,13 @@ public class Logic implements LogicInterface
                 set = true;
             }
 
-        if(!set)
-            Log.i(TAG, "Promotion of id " + promotionId + " unfounded");
+    public void setStudents(ArrayList<Student> students, long promotionId)
+    {
+        getPromotion(promotionId).getStudents().addAll(students);
     }
 
     public void setStudents(ArrayList<Student> students, String promotionAcronym)
     {
-        boolean set = false;
-        for(Promotion promotion: getPromotions())
-            if(promotion.getAcronym() == promotionAcronym)
-            {
-                promotion.setStudents(students);
-                set = true;
-            }
-
-        if(!set)
-            Log.i(TAG, "Promotion of id " + promotionAcronym + " unfounded");
+        getPromotion(promotionAcronym).getStudents().addAll(students);
     }
 }
