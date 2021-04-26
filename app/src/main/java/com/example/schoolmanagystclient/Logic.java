@@ -32,6 +32,30 @@ public class Logic implements LogicInterface
         return _promotions;
     }
 
+    private Promotion getPromotion(long promotionId)
+    {
+        for(Promotion promotion: getPromotions())
+            if(promotion.getId() == promotionId)
+            {
+                return promotion;
+            }
+
+        Log.i(TAG, "Promotion no." + promotionId + " not found");
+        return new Promotion();
+    }
+
+    private Promotion getPromotion(String promotionAcronym)
+    {
+        for(Promotion promotion: getPromotions())
+            if(promotion.getAcronym() == promotionAcronym)
+            {
+                return promotion;
+            }
+
+        Log.i(TAG, "Promotion [" + promotionAcronym + "] not found");
+        return new Promotion();
+    }
+
     public void setPromotions(ArrayList<Promotion> promotions)
     {
         _promotions = promotions;
