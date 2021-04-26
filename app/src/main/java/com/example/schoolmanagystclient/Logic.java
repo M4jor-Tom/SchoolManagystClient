@@ -1,16 +1,17 @@
 package com.example.schoolmanagystclient;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class Logic implements LogicInterface
 {
+    private static final String TAG = "Logic";
     private ArrayList<Promotion> _promotions;
-    private ArrayList<Student> _students;
 
     public Logic()
     {
         setPromotions(new ArrayList<>());
-        setStudents(new ArrayList<>());
     }
 
     @Override
@@ -39,11 +40,39 @@ public class Logic implements LogicInterface
     @Override
     public ArrayList<Student> getStudents()
     {
-        return _students;
+        ArrayList<Student> students = new ArrayList<>();
+
+        for(Promotion promotion: getPromotions())
+            students.addAll(promotion.getStudents());
+
+        return students;
     }
 
-    public void setStudents(ArrayList<Student> students)
+    public void setStudents(ArrayList<Student> students, long promotionId)
     {
-        _students = students;
+        boolean set = false;
+        for(Promotion promotion: getPromotions())
+            if(promotion.getId() == promotionId)
+            {
+                promotion.setStudents(students);
+                set = true;
+            }
+
+        if(!set)
+            Log.i(TAG, "Promotion of id " + promotionId + " unfounded");
+    }
+
+    public void setStudents(ArrayList<Student> students, String promotionAcronym)
+    {
+        boolean set = false;
+        for(Promotion promotion: getPromotions())
+            if(promotion.getAcronym() == promotionAcronym)
+            {
+                promotion.setStudents(students);
+                set = true;
+            }
+
+        if(!set)
+            Log.i(TAG, "Promotion of id " + promotionAcronym + " unfounded");
     }
 }
