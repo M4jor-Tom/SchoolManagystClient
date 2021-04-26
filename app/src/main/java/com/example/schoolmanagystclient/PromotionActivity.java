@@ -2,7 +2,9 @@ package com.example.schoolmanagystclient;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class PromotionActivity extends AppCompatActivity
 {
+    private static final String TAG = "PromotionActivity";
     private ListView _promotionsListView;
     private MaterialButton _promotionFormButton;
 
@@ -25,6 +28,16 @@ public class PromotionActivity extends AppCompatActivity
         setPromotionFormButton((MaterialButton)findViewById(R.id.promotionFormButton));
         setPromotionsListView((ListView)findViewById(R.id.promotionsListView));
 
+        getPromotionsListView().setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent intent = new Intent(PromotionActivity.this, StudentActivity.class);
+                intent.putExtra("promotionId", MainActivity.getLogicInterface().getPromotions().get(position).getId());
+                startActivity(intent);
+            }
+        });
 
         //Assigning adapter
         getPromotionsListView().setAdapter(
