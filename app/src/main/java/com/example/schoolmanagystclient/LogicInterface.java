@@ -9,4 +9,7 @@ public interface LogicInterface
 
     public ArrayList<Student> getStudents();
     public ArrayList<Promotion> getPromotions();
+
+    public ArrayList<Student> getStudents(long promotionId);
+    public ArrayList<Student> getStudents(String promotionAcronym);
 }

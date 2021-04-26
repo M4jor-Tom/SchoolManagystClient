@@ -72,15 +72,17 @@ public class Logic implements LogicInterface
         return students;
     }
 
-    public void setStudents(ArrayList<Student> students, long promotionId)
+    @Override
+    public ArrayList<Student> getStudents(long promotionId)
     {
-        boolean set = false;
-        for(Promotion promotion: getPromotions())
-            if(promotion.getId() == promotionId)
-            {
-                promotion.setStudents(students);
-                set = true;
-            }
+        return getPromotion(promotionId).getStudents();
+    }
+
+    @Override
+    public ArrayList<Student> getStudents(String promotionAcronym)
+    {
+        return getPromotion(promotionAcronym).getStudents();
+    }
 
     public void setStudents(ArrayList<Student> students, long promotionId)
     {
