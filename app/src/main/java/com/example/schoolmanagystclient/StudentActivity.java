@@ -33,14 +33,14 @@ public class StudentActivity extends AppCompatActivity
         ArrayList<Student> students = MainActivity.getLogicInterface().getStudents();
 
         //If promotionId is set, promotion's students are to be shown
-        if(getIntent().hasExtra("promotionId"))
+        if(getIntent().hasExtra("promotionPosition"))
         {
-            long promotionId = getIntent().getLongExtra("promotionId", 0);
+            int promotionPosition = (int)getIntent().getLongExtra("promotionPosition", 0);
 
-            Log.i(TAG, "promotionId: " + promotionId);
+            Log.i(TAG, "promotionPosition: " + promotionPosition);
 
             students = MainActivity.getLogicInterface().getStudents(
-                    promotionId
+                    MainActivity.getLogicInterface().getPromotions().get(promotionPosition).getAcronym()
             );
         }
 

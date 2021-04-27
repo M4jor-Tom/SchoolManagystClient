@@ -34,7 +34,7 @@ public class PromotionActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 Intent intent = new Intent(PromotionActivity.this, StudentActivity.class);
-                intent.putExtra("promotionId", MainActivity.getLogicInterface().getPromotions().get(position).getId());
+                intent.putExtra("promotionPosition", (long)position);
                 startActivity(intent);
             }
         });

@@ -40,20 +40,12 @@ public class StudentFormActivity extends AppCompatActivity
         );
 
         //If promotionIndex is set, use it to locate the spinner default position
-        if(getIntent().hasExtra("promotionId"))
+        if(getIntent().hasExtra("promotionPosition"))
         {
             boolean searching = true;
-            long promotionId = getIntent().getLongExtra("promotionId", 0);
-            int promotionIndex = 0;
+            int promotionPosition = (int)getIntent().getLongExtra("promotionPosition", 0);
 
-            //Calculating promotion index from promotionId and promotions list
-            for(Promotion promotion: MainActivity.getLogicInterface().getPromotions())
-                if(promotion.getId() == promotionId)
-                    searching = false;
-                else if(searching)
-                    promotionIndex++;
-
-            getPromotionSpinner().setSelection(promotionIndex);
+            getPromotionSpinner().setSelection(promotionPosition);
         }
 
         //Setting onclick to button
