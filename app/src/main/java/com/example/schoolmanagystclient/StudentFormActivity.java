@@ -59,8 +59,12 @@ public class StudentFormActivity extends AppCompatActivity
                                 getStudentFirstNameEditText().getText().toString(),
                                 getStudentLastNameEditText().getText().toString()
                         );
+
                         Log.i(TAG, student + " shall be created now");
-                        MainActivity.getLogicInterface().addStudent(student);
+
+                        MainActivity.getLogicInterface().getPromotions().get(
+                                getPromotionSpinner().getSelectedItemPosition()
+                        ).addStudent(student);
                     }
                 }
         );

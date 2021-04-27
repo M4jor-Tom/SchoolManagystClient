@@ -15,12 +15,6 @@ public class Logic implements LogicInterface
     }
 
     @Override
-    public void addStudent(Student student)
-    {
-        getStudents().add(student);
-    }
-
-    @Override
     public void addPromotion(Promotion promotion)
     {
         getPromotions().add(promotion);
