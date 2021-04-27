@@ -58,6 +58,7 @@ public class StudentActivity extends AppCompatActivity
                     public void onClick(View v)
                     {
                         Intent intent = new Intent(StudentActivity.this, StudentFormActivity.class);
+                        intent.putExtras(getIntent());
                         startActivity(intent);
                     }
                 }
