@@ -1,11 +1,20 @@
 package com.example.schoolmanagystclient;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Student
 {
+    @PrimaryKey
     private long _id;
-    private String
-            _firstName,
-            _lastName;
+
+    @ColumnInfo(name="first_name")
+    private String _firstName;
+
+    @ColumnInfo(name="last_name")
+    private String _lastName;
 
     public Student(long id, String firstName, String lastName)
     {
