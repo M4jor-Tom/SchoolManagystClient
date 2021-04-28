@@ -1,13 +1,28 @@
 package com.example.schoolmanagystclient;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.Relation;
+
 import java.util.ArrayList;
 
+@Entity
 public class Promotion
 {
+    @PrimaryKey
     private long _id;
-    private String
-            _entitled,
-            _acronym;
+
+    @ColumnInfo(name="entitled")
+    private String _entitled;
+
+    @ColumnInfo(name="acronym")
+    private String _acronym;
+
+    @Relation(
+            parentColumn = "promotionId",
+            entityColumn = "promotionId"
+    )
     private ArrayList<Student> _students;
 
 
