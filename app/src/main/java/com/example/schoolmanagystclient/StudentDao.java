@@ -11,7 +11,7 @@ import java.util.List;
 public interface StudentDao
 {
     @Query("SELECT * FROM student")
-    public List<Promotion> getAllStudents();
+    public List<Student> getAllStudents();
 
     //@Query("SELECT * FROM student WHERE promotionId = :promotionId")
     //public Promotion getStudentByPromotionId(long promotionId);
