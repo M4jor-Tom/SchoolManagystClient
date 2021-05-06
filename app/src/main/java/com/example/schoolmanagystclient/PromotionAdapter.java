@@ -8,11 +8,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class PromotionAdapter extends MyAdapter<Promotion>
+public class PromotionAdapter extends MyAdapter<PersistantPromotion>
 {
     private static final String TAG = "PromotionAdapter";
 
-    public PromotionAdapter(Context context, List<Promotion> promotions)
+    public PromotionAdapter(Context context, List<PersistantPromotion> promotions)
     {
         super(context, promotions);
     }

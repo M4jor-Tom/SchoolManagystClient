@@ -10,15 +10,20 @@ import java.util.List;
 @Dao
 public interface PromotionDao
 {
-    @Query("SELECT * FROM promotion")
-    public List<Promotion> getAllPromotions();
+    @Query("SELECT * FROM PromotionRoomEntity")
+    public List<PersistantPromotion> getAllPromotions();
 
-    @Query("SELECT * FROM promotion WHERE _id = :promotionId")
-    public Promotion getPromotionById(long promotionId);
+    @Query("SELECT * FROM PromotionRoomEntity WHERE promotionId = :promotionId")
+    public PersistantPromotion getPromotionRoomEntityById(long promotionId);
+
+    @Query("SELECT * FROM PromotionRoomEntity WHERE promotionId = :promotionId")
+    public PersistantPromotion getPromotionById(long promotionId);
 
     @Insert
-    void insertAll(Promotion... promotions);
+    void insertAll(PromotionRoomEntity... promotions);
+    @Insert
+    void insertAll(List<PromotionRoomEntity> promotions);
 
     @Delete
-    void delete(Promotion promotion);
+    void delete(PromotionRoomEntity promotion);
 }

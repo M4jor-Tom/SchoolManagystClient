@@ -1,6 +1,11 @@
 package com.example.schoolmanagystclient;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +15,14 @@ import android.widget.ListView;
 
 import com.google.android.material.button.MaterialButton;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<AppDatabase>
 {
     private static LogicInterface _logicInterface;
 
     private MaterialButton _promotionsButton;
     private MaterialButton _studentsButton;
+
+    private static AppDatabase _appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,7 +32,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         //N-tier architecture
-        setLogicInterface(new Logic());
+        //Database stuff
+        getSupportLoaderManager().initLoader(0, null, MainActivity.this).forceLoad();
+        setLogicInterface(new Logic(new DatabaseLoader(MainActivity.this)));
 
         //Finding interactive elements
         setPromotionsButton((MaterialButton)findViewById(R.id.promotionsButton));
@@ -83,5 +92,34 @@ public class MainActivity extends AppCompatActivity
     private void setStudentsButton(MaterialButton studentsButton)
     {
         _studentsButton = studentsButton;
+    }
+
+    public static AppDatabase getAppDatabase()
+    {
+        return _appDatabase;
+    }
+
+    private static void setAppDatabase(AppDatabase appDatabase)
+    {
+        _appDatabase = appDatabase;
+    }
+
+    @NonNull
+    @Override
+    public Loader<AppDatabase> onCreateLoader(int id, @Nullable Bundle args)
+    {
+        return new DatabaseLoader(MainActivity.this);
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<AppDatabase> loader, AppDatabase data)
+    {
+        setAppDatabase(data);
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<AppDatabase> loader)
+    {
+
     }
 }

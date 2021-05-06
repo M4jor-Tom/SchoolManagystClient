@@ -2,89 +2,94 @@ package com.example.schoolmanagystclient;
 
 import android.util.Log;
 
+import androidx.room.Database;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Logic implements LogicInterface
 {
     private static final String TAG = "Logic";
-    private ArrayList<Promotion> _promotions;
 
-    public Logic()
+    private DatabaseLoader _databaseLoader;
+
+    public Logic(DatabaseLoader databaseLoader)
     {
-        setPromotions(new ArrayList<>());
+        setDatabaseLoader(databaseLoader);
     }
 
     @Override
-    public void addPromotion(Promotion promotion)
+    public void addStudent(StudentRoomEntity studentRoomEntity)
     {
-        getPromotions().add(promotion);
+        getAppDatabase().studentDao().insertAll(studentRoomEntity);
     }
 
     @Override
-    public ArrayList<Promotion> getPromotions()
+    public void addPromotion(PromotionRoomEntity promotionRoomEntity)
     {
-        return _promotions;
+        getAppDatabase().promotionDao().insertAll(promotionRoomEntity);
+    }
+
+    @Override
+    public List<PersistantPromotion> getPromotions()
+    {
+        return getAppDatabase().promotionDao().getAllPromotions();
     }
 
     private Promotion getPromotion(long promotionId)
     {
-        for(Promotion promotion: getPromotions())
-            if(promotion.getId() == promotionId)
+        for(Promotion promotionWithStudents: getPromotions())
+            if(promotionWithStudents.getId() == promotionId)
             {
-                return promotion;
+                return promotionWithStudents;
             }
 
         Log.i(TAG, "Promotion no." + promotionId + " not found");
-        return new Promotion();
+        return new PersistantPromotion();
     }
 
-    private Promotion getPromotion(String promotionAcronym)
+    private Promotion getPromotionWithStudents(String promotionAcronym)
     {
-        for(Promotion promotion: getPromotions())
-            if(promotion.getAcronym() == promotionAcronym)
+        for(Promotion promotionWithStudents: getPromotions())
+            if(promotionWithStudents.getAcronym() == promotionAcronym)
             {
-                return promotion;
+                return promotionWithStudents;
             }
 
         Log.i(TAG, "Promotion [" + promotionAcronym + "] not found");
-        return new Promotion();
+        return new PersistantPromotion();
     }
 
-    public void setPromotions(ArrayList<Promotion> promotions)
+    public static AppDatabase getAppDatabase()
     {
-        _promotions = promotions;
+        return MainActivity.getAppDatabase();
     }
 
-    @Override
-    public ArrayList<Student> getStudents()
+    public DatabaseLoader getDatabaseLoader()
     {
-        ArrayList<Student> students = new ArrayList<>();
-
-        for(Promotion promotion: getPromotions())
-            students.addAll(promotion.getStudents());
-
-        return students;
+        return _databaseLoader;
     }
 
-    @Override
-    public ArrayList<Student> getStudents(long promotionId)
+    public void setDatabaseLoader(DatabaseLoader databaseLoader)
     {
-        return getPromotion(promotionId).getStudents();
+        _databaseLoader = databaseLoader;
     }
 
     @Override
-    public ArrayList<Student> getStudents(String promotionAcronym)
+    public List<PersistantStudent> getStudents()
     {
-        return getPromotion(promotionAcronym).getStudents();
+        return getAppDatabase().studentDao().getAllStudents();
     }
 
-    public void setStudents(ArrayList<Student> students, long promotionId)
+    @Override
+    public List<PersistantStudent> getStudents(long promotionId)
     {
-        getPromotion(promotionId).getStudents().addAll(students);
+        return getAppDatabase().studentDao().getStudentByPromotionId(promotionId);
     }
 
-    public void setStudents(ArrayList<Student> students, String promotionAcronym)
+    @Override
+    public List<PersistantStudent> getStudents(String promotionAcronym)
     {
-        getPromotion(promotionAcronym).getStudents().addAll(students);
+        return getAppDatabase().studentDao().getStudentByPromotionAcronym(promotionAcronym);
     }
 }

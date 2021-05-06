@@ -17,9 +17,9 @@ public class PromotionRoomEntity
     @ColumnInfo(name = "acronym")
     private String _acronym;
 
-    public PromotionRoomEntity(long id, String entitled, String acronym)
+    public PromotionRoomEntity(String entitled, String acronym)
     {
-        setId(id);
+        setId(-1);
         setEntitled(entitled);
         setAcronym(acronym);
     }

@@ -20,9 +20,9 @@ public class StudentRoomEntity
     @ColumnInfo(name="lastName")
     private String _lastName;
 
-    public StudentRoomEntity(long id, long promotionId, String firstName, String lastName)
+    public StudentRoomEntity(long promotionId, String firstName, String lastName)
     {
-        setId(id);
+        setId(-1);
         setPromotionId(promotionId);
         setFirstName(firstName);
         setLastName(lastName);

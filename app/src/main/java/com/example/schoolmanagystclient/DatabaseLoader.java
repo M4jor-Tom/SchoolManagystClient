@@ -18,6 +18,7 @@ public class DatabaseLoader extends AsyncTaskLoader<AppDatabase>
     @Override
     public AppDatabase loadInBackground()
     {
+        //getContext().deleteDatabase("schoolmanagyst-db");
         return Room.databaseBuilder(
                 getContext(),
                 AppDatabase.class, "schoolmanagyst-db"

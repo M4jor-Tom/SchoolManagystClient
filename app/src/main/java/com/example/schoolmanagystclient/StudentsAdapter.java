@@ -8,11 +8,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class StudentsAdapter extends MyAdapter<Student>
+public class StudentsAdapter extends MyAdapter<PersistantStudent>
 {
     private static final String TAG = "StudentsAdapter";
 
-    public StudentsAdapter(Context context, List<Student> students)
+    public StudentsAdapter(Context context, List<PersistantStudent> students)
     {
         super(context, students);
 
