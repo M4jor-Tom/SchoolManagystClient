@@ -1,43 +1,16 @@
 package com.example.schoolmanagystclient;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-import androidx.room.Relation;
-
 import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-public class Promotion
+abstract public class Promotion
 {
-    @PrimaryKey
-    private long _id;
-
-    @ColumnInfo(name="entitled")
-    private String _entitled;
-
-    @ColumnInfo(name="acronym")
-    private String _acronym;
-
-    @Relation(
-            parentColumn = "promotionId",
-            entityColumn = "promotionId"
-    )
-    private ArrayList<Student> _students;
-
-
-    public Promotion(long id, String entitled, String acronym, ArrayList<Student> students)
+    public Promotion(String entitled, String acronym, List<Student> students)
     {
-        setId(id);
         setEntitled(entitled);
         setAcronym(acronym);
         setStudents(new ArrayList<>());
         setStudents(students);
-    }
-
-    public Promotion(String entitled, String acronym, ArrayList<Student> students)
-    {
-        this(-1, entitled, acronym, students);
     }
 
     public Promotion(String entitled, String acronym)
@@ -47,67 +20,43 @@ public class Promotion
 
     public Promotion()
     {
-        setEntitled("");
-        setAcronym("");
-        setStudents(new ArrayList<>());
-    }
-
-    public void addStudent(Student student)
-    {
-        getStudents().add(student);
+        this("", "", new ArrayList<>());
     }
 
     public String toString()
     {
         String _toString = "Promotion::\n{\n\tentitled = " + getEntitled() + "\n\tacronym = " + getAcronym();
-        for(int i = 0; i < _students.size(); i++)
-            _toString += "\n\t" + getStudents().get(i);
+        for(Student student: getStudents())
+            _toString += "\n\t" + student;
 
         return _toString + "\n}";
     }
 
+    public boolean ownsStudent(Student student)
+    {
+        for(Student studentChecked: getStudents())
+            if(student.equalsStudent(studentChecked))
+                return true;
+
+            return false;
+    }
+
     public boolean isNull()
     {
-        return _entitled == "" && _acronym == "";
+        return getEntitled() == "" && getAcronym() == "";
     }
 
-    public long getId()
-    {
-        return _id;
-    }
+    abstract public long getId();
 
-    public void setId(long id)
-    {
-        _id = id;
-    }
+    abstract public String getEntitled();
 
-    public String getEntitled()
-    {
-        return _entitled;
-    }
+    abstract public void setEntitled(String entitled);
 
-    public void setEntitled(String entitled)
-    {
-        _entitled = entitled;
-    }
+    abstract public String getAcronym();
 
-    public String getAcronym()
-    {
-        return _acronym;
-    }
+    abstract public void setAcronym(String acronym);
 
-    public void setAcronym(String acronym)
-    {
-        _acronym = acronym;
-    }
+    abstract public List<Student> getStudents();
 
-    public ArrayList<Student> getStudents()
-    {
-        return _students;
-    }
-
-    public void setStudents(ArrayList<Student> students)
-    {
-        _students = students;
-    }
+    abstract public void setStudents(List<Student> students);
 }

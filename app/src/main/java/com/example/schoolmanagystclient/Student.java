@@ -1,37 +1,18 @@
 package com.example.schoolmanagystclient;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import androidx.annotation.Nullable;
 
-@Entity
-public class Student
+abstract public class Student
 {
-    @PrimaryKey
-    private long _id;
-
-    @ColumnInfo(name="first_name")
-    private String _firstName;
-
-    @ColumnInfo(name="last_name")
-    private String _lastName;
-
-    public Student(long id, String firstName, String lastName)
+    public Student(String firstName, String lastName)
     {
-        setId(id);
         setFirstName(firstName);
         setLastName(lastName);
     }
 
-    public Student(String firstName, String lastName)
-    {
-        this(-1, firstName, lastName);
-    }
-
     public Student()
     {
-        setFirstName("");
-        setLastName("");
+        this("", "");
     }
 
     public String toString()
@@ -39,33 +20,18 @@ public class Student
         return "Student::{firstName = " + getFirstName() + ",lastName = " + getLastName() + "}";
     }
 
-    public long getId()
+    public boolean equalsStudent(Student student)
     {
-        return _id;
+        return student.getFirstName() == getFirstName() && student.getLastName() == getLastName();
     }
 
-    public void setId(long id)
-    {
-        _id = id;
-    }
+    abstract public long getId();
 
-    public String getFirstName()
-    {
-        return _firstName;
-    }
+    abstract public String getFirstName();
 
-    public void setFirstName(String firstName)
-    {
-        _firstName = firstName;
-    }
+    abstract public void setFirstName(String firstName);
 
-    public String getLastName()
-    {
-        return _lastName;
-    }
+    abstract public String getLastName();
 
-    public void setLastName(String lastName)
-    {
-        _lastName = lastName;
-    }
+    abstract public void setLastName(String lastName);
 }
