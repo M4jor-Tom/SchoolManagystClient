@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class StudentActivity extends AppCompatActivity
 {
@@ -30,7 +30,7 @@ public class StudentActivity extends AppCompatActivity
         setStudentsListView((ListView)findViewById(R.id.studentsListView));
 
         //If promotionId is not set, all students are to be shown
-        ArrayList<Student> students = MainActivity.getLogicInterface().getStudents();
+        List<Student> students = MainActivity.getLogicInterface().getStudents();
 
         //If promotionId is set, promotion's students are to be shown
         if(getIntent().hasExtra("promotionPosition"))

@@ -3,6 +3,7 @@ package com.example.schoolmanagystclient;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Logic implements LogicInterface
 {
@@ -67,13 +68,13 @@ public class Logic implements LogicInterface
     }
 
     @Override
-    public ArrayList<Student> getStudents(long promotionId)
+    public List<Student> getStudents(long promotionId)
     {
         return getPromotion(promotionId).getStudents();
     }
 
     @Override
-    public ArrayList<Student> getStudents(String promotionAcronym)
+    public List<Student> getStudents(String promotionAcronym)
     {
         return getPromotion(promotionAcronym).getStudents();
     }

@@ -1,6 +1,7 @@
 package com.example.schoolmanagystclient;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Promotion
 {
@@ -8,10 +9,10 @@ public class Promotion
     private String
             _entitled,
             _acronym;
-    private ArrayList<Student> _students;
+    private List<Student> _students;
 
 
-    public Promotion(long id, String entitled, String acronym, ArrayList<Student> students)
+    public Promotion(long id, String entitled, String acronym, List<Student> students)
     {
         setId(id);
         setEntitled(entitled);
@@ -20,7 +21,7 @@ public class Promotion
         setStudents(students);
     }
 
-    public Promotion(String entitled, String acronym, ArrayList<Student> students)
+    public Promotion(String entitled, String acronym, List<Student> students)
     {
         this(-1, entitled, acronym, students);
     }
@@ -86,12 +87,12 @@ public class Promotion
         _acronym = acronym;
     }
 
-    public ArrayList<Student> getStudents()
+    public List<Student> getStudents()
     {
         return _students;
     }
 
-    public void setStudents(ArrayList<Student> students)
+    public void setStudents(List<Student> students)
     {
         _students = students;
     }
