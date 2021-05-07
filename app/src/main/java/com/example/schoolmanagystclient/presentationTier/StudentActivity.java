@@ -1,4 +1,4 @@
-package com.example.schoolmanagystclient;
+package com.example.schoolmanagystclient.presentationTier;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.schoolmanagystclient.R;
+import com.example.schoolmanagystclient.entities.Student;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.List;

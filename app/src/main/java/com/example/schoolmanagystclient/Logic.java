@@ -2,6 +2,9 @@ package com.example.schoolmanagystclient;
 
 import android.util.Log;
 
+import com.example.schoolmanagystclient.entities.Promotion;
+import com.example.schoolmanagystclient.entities.Student;
+
 import java.util.ArrayList;
 import java.util.List;
 

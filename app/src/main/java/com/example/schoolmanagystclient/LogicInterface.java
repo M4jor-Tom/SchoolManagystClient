@@ -1,5 +1,8 @@
 package com.example.schoolmanagystclient;
 
+import com.example.schoolmanagystclient.entities.Promotion;
+import com.example.schoolmanagystclient.entities.Student;
+
 import java.util.List;
 
 public interface LogicInterface

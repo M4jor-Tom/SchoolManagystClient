@@ -1,4 +1,4 @@
-package com.example.schoolmanagystclient;
+package com.example.schoolmanagystclient.entities;
 
 public class Student
 {

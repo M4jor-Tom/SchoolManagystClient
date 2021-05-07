@@ -1,14 +1,14 @@
-package com.example.schoolmanagystclient;
+package com.example.schoolmanagystclient.presentationTier;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.schoolmanagystclient.R;
 import com.google.android.material.button.MaterialButton;
 
 public class PromotionActivity extends AppCompatActivity
