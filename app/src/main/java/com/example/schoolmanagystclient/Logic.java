@@ -36,7 +36,6 @@ public class Logic implements LogicInterface
     @Override
     public List<Student> getStudents(String promotionAcronym)
     {
-        actualizeStudents(promotionAcronym);
         return getStudents();
     }
 
