@@ -11,7 +11,7 @@ import java.util.List;
 public class Logic implements LogicInterface
 {
     private static final String TAG = "Logic";
-    private ArrayList<Promotion> _promotions;
+    private List<Promotion> _promotions;
 
     public Logic()
     {
@@ -25,7 +25,7 @@ public class Logic implements LogicInterface
     }
 
     @Override
-    public ArrayList<Promotion> getPromotions()
+    public List<Promotion> getPromotions()
     {
         return _promotions;
     }
@@ -54,15 +54,15 @@ public class Logic implements LogicInterface
         return new Promotion();
     }
 
-    public void setPromotions(ArrayList<Promotion> promotions)
+    public void setPromotions(List<Promotion> promotions)
     {
         _promotions = promotions;
     }
 
     @Override
-    public ArrayList<Student> getStudents()
+    public List<Student> getStudents()
     {
-        ArrayList<Student> students = new ArrayList<>();
+        List<Student> students = new ArrayList<>();
 
         for(Promotion promotion: getPromotions())
             students.addAll(promotion.getStudents());
@@ -82,12 +82,12 @@ public class Logic implements LogicInterface
         return getPromotion(promotionAcronym).getStudents();
     }
 
-    public void setStudents(ArrayList<Student> students, long promotionId)
+    public void setStudents(List<Student> students, long promotionId)
     {
         getPromotion(promotionId).getStudents().addAll(students);
     }
 
-    public void setStudents(ArrayList<Student> students, String promotionAcronym)
+    public void setStudents(List<Student> students, String promotionAcronym)
     {
         getPromotion(promotionAcronym).getStudents().addAll(students);
     }
