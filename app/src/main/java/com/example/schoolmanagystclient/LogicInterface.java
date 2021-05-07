@@ -9,6 +9,7 @@ import java.util.List;
 public interface LogicInterface
 {
     public List<Promotion> getPromotions();
+    public Promotion getPromotion(String promotionAcronym);
     public void setPromotions(List<Promotion> promotions);
     public void addPromotion(Promotion promotion);
 

@@ -58,6 +58,7 @@ public class Logic implements LogicInterface
         return _promotions;
     }
 
+    @Override
     public Promotion getPromotion(String promotionAcronym)
     {
         for(Promotion promotion: getPromotions())
