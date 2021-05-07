@@ -15,5 +15,5 @@ public interface LogicInterface
     public List<Student> getStudents();
     public List<Student> getStudents(String promotionAcronym);
     public void setStudents(List<Student> students);
-    public void addStudent(Student student);
+    public void addStudent(Student student, String promotionAcronym);
 }

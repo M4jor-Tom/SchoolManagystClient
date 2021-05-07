@@ -46,9 +46,9 @@ public class Logic implements LogicInterface
     }
 
     @Override
-    public void addStudent(Student student)
+    public void addStudent(Student student, String promotionAcronym)
     {
-        getRestServiceInterface().addStudent(student);
+        getRestServiceInterface().addStudent(student, promotionAcronym);
     }
 
     @Override
@@ -56,6 +56,15 @@ public class Logic implements LogicInterface
     {
         actualizePromotions();
         return _promotions;
+    }
+
+    public Promotion getPromotion(String promotionAcronym)
+    {
+        for(Promotion promotion: getPromotions())
+            if(promotion.getAcronym() == promotionAcronym)
+                return promotion;
+
+            return null;
     }
 
     @Override
@@ -106,13 +115,20 @@ public class Logic implements LogicInterface
 
     public void actualizeStudents(String promotionAcronym)
     {
-        getRestServiceInterface().getStudents(promotionAcronym).enqueue(new Callback<List<Student>>()
+        getRestServiceInterface().getStudents().enqueue(new Callback<List<Student>>()
         {
             @Override
             public void onResponse(Call<List<Student>> call, Response<List<Student>> response)
             {
                 Log.i(TAG, response.body().toString());
-                setStudents(response.body());
+
+                //Finding students of a specific promotion
+                List<Student> students = new ArrayList<>();
+                for(Student student: response.body())
+                    if(getPromotion(promotionAcronym).getStudents().contains(student))
+                        students.add(student);
+
+                setStudents(students);
             }
             @Override
             public void onFailure(Call<List<Student>> call, Throwable t)
