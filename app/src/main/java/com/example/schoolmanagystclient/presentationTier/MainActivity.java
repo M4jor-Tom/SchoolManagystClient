@@ -9,7 +9,14 @@ import android.view.View;
 import com.example.schoolmanagystclient.Logic;
 import com.example.schoolmanagystclient.LogicInterface;
 import com.example.schoolmanagystclient.R;
+import com.example.schoolmanagystclient.Web.RestService;
 import com.google.android.material.button.MaterialButton;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -26,7 +33,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         //N-tier architecture
-        setLogicInterface(new Logic());
+        setLogicInterface(new Logic(RestService.getInstance()));
 
         //Finding interactive elements
         setPromotionsButton((MaterialButton)findViewById(R.id.promotionsButton));
