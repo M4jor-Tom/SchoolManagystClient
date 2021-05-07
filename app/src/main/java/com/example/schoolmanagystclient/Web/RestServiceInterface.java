@@ -24,8 +24,8 @@ public interface RestServiceInterface
 
     @GET("etudiant")
     Call<List<Student>> getStudents();
-    @GET("etudiant/{promotionAcronym}")
-    Call<List<Student>> getStudents(String promotionAcronym);
-    @POST("etudiant")
-    Call<Void> addStudent(@Body Student student);
+    @GET("etudiant/{studentId}")
+    Call<List<Student>> getStudents(@Path("promotionAcronym") long studentId);
+    @POST("etudiant/{promotionAcronym}")
+    Call<Void> addStudent(@Path("promotionAcronym") @Body Student student,  String promotionAcronym);
 }
