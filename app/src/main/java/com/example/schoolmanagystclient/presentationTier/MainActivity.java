@@ -1,13 +1,14 @@
-package com.example.schoolmanagystclient;
+package com.example.schoolmanagystclient.presentationTier;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 
+import com.example.schoolmanagystclient.Logic;
+import com.example.schoolmanagystclient.LogicInterface;
+import com.example.schoolmanagystclient.R;
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity

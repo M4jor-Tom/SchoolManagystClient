@@ -1,4 +1,4 @@
-package com.example.schoolmanagystclient;
+package com.example.schoolmanagystclient.presentationTier;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.example.schoolmanagystclient;
+package com.example.schoolmanagystclient.presentationTier;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +7,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.schoolmanagystclient.entities.Promotion;
+import com.example.schoolmanagystclient.R;
 import com.google.android.material.button.MaterialButton;
 
 public class PromotionFormActivity extends AppCompatActivity
