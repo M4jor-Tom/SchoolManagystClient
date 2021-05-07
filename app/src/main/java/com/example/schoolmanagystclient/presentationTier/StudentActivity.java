@@ -31,25 +31,24 @@ public class StudentActivity extends AppCompatActivity
         setStudentFormButton((MaterialButton)findViewById(R.id.studentFormButton));
         setStudentsListView((ListView)findViewById(R.id.studentsListView));
 
+
         //If promotionId is not set, all students are to be shown
         List<Student> students = MainActivity.getLogicInterface().getStudents();
 
         //If promotionId is set, promotion's students are to be shown
         if(getIntent().hasExtra("promotionPosition"))
         {
-            int promotionPosition = (int)getIntent().getLongExtra("promotionPosition", 0);
+            String promotionAcronym = getIntent().getStringExtra("promotionAcronym");
 
-            Log.i(TAG, "promotionPosition: " + promotionPosition);
+            Log.i(TAG, "promotionAcronym: " + promotionAcronym);
 
-            students = MainActivity.getLogicInterface().getStudents(
-                    MainActivity.getLogicInterface().getPromotions().get(promotionPosition).getAcronym()
-            );
+            students = MainActivity.getLogicInterface().getStudents(promotionAcronym);
         }
 
 
         //Assigning adapter
         getStudentsListView().setAdapter(
-                new StudentsAdapter(this, students)
+                new StudentsAdapter(this, MainActivity.getLogicInterface().getStudents())
         );
 
         //Setting of interactive elements' OnClickListeners

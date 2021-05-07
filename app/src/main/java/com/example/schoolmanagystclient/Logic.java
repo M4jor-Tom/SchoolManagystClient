@@ -2,93 +2,141 @@ package com.example.schoolmanagystclient;
 
 import android.util.Log;
 
+import com.example.schoolmanagystclient.Web.RestServiceInterface;
 import com.example.schoolmanagystclient.entities.Promotion;
 import com.example.schoolmanagystclient.entities.Student;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Logic implements LogicInterface
 {
     private static final String TAG = "Logic";
+    private List<Student> _students;
     private List<Promotion> _promotions;
+    private RestServiceInterface _restServiceInterface;
 
-    public Logic()
+    public Logic(RestServiceInterface restServiceInterface)
     {
         setPromotions(new ArrayList<>());
+        setRestServiceInterface(restServiceInterface);
     }
 
     @Override
-    public void addPromotion(Promotion promotion)
+    public List<Student> getStudents()
     {
-        getPromotions().add(promotion);
+        actualizeStudents();
+        return _students;
+    }
+
+    @Override
+    public List<Student> getStudents(String promotionAcronym)
+    {
+        return getStudents();
+    }
+
+    @Override
+    public void setStudents(List<Student> students)
+    {
+        _students = students;
+    }
+
+    @Override
+    public void addStudent(Student student, String promotionAcronym)
+    {
+        getRestServiceInterface().addStudent(student, promotionAcronym);
     }
 
     @Override
     public List<Promotion> getPromotions()
     {
+        actualizePromotions();
         return _promotions;
     }
 
-    private Promotion getPromotion(long promotionId)
-    {
-        for(Promotion promotion: getPromotions())
-            if(promotion.getId() == promotionId)
-            {
-                return promotion;
-            }
-
-        Log.i(TAG, "Promotion no." + promotionId + " not found");
-        return new Promotion();
-    }
-
-    private Promotion getPromotion(String promotionAcronym)
+    @Override
+    public Promotion getPromotion(String promotionAcronym)
     {
         for(Promotion promotion: getPromotions())
             if(promotion.getAcronym() == promotionAcronym)
-            {
                 return promotion;
-            }
 
-        Log.i(TAG, "Promotion [" + promotionAcronym + "] not found");
-        return new Promotion();
+            return null;
     }
 
+    @Override
     public void setPromotions(List<Promotion> promotions)
     {
         _promotions = promotions;
     }
 
     @Override
-    public List<Student> getStudents()
+    public void addPromotion(Promotion promotion)
     {
-        List<Student> students = new ArrayList<>();
-
-        for(Promotion promotion: getPromotions())
-            students.addAll(promotion.getStudents());
-
-        return students;
+        getRestServiceInterface().addPromotion(promotion);
     }
 
-    @Override
-    public List<Student> getStudents(long promotionId)
+    private RestServiceInterface getRestServiceInterface()
     {
-        return getPromotion(promotionId).getStudents();
+        return _restServiceInterface;
     }
 
-    @Override
-    public List<Student> getStudents(String promotionAcronym)
+    private void setRestServiceInterface(RestServiceInterface restServiceInterface)
     {
-        return getPromotion(promotionAcronym).getStudents();
+        _restServiceInterface = restServiceInterface;
     }
 
-    public void setStudents(List<Student> students, long promotionId)
+    public void actualizePromotions()
     {
-        getPromotion(promotionId).getStudents().addAll(students);
+        getRestServiceInterface().getPromotions().enqueue(new Callback<List<Promotion>>()
+        {
+            @Override
+            public void onResponse(Call<List<Promotion>> call, Response<List<Promotion>> response)
+            {
+                Log.i(TAG, response.body().toString());
+                setPromotions(response.body());
+            }
+            @Override
+            public void onFailure(Call<List<Promotion>> call, Throwable t)
+            {
+                Log.e(TAG,"getPromotions");
+                setPromotions(new ArrayList<>());
+            }
+        });
     }
 
-    public void setStudents(List<Student> students, String promotionAcronym)
+    public void actualizeStudents()
     {
-        getPromotion(promotionAcronym).getStudents().addAll(students);
+        actualizeStudents("");
+    }
+
+    public void actualizeStudents(String promotionAcronym)
+    {
+        getRestServiceInterface().getStudents().enqueue(new Callback<List<Student>>()
+        {
+            @Override
+            public void onResponse(Call<List<Student>> call, Response<List<Student>> response)
+            {
+                Log.i(TAG, response.body().toString());
+
+                //Finding students of a specific promotion
+                List<Student> students = new ArrayList<>();
+                for(Student student: response.body())
+                    if(getPromotion(promotionAcronym).getStudents().contains(student))
+                        students.add(student);
+
+                setStudents(students);
+            }
+            @Override
+            public void onFailure(Call<List<Student>> call, Throwable t)
+            {
+                Log.e(TAG,"getStudents");
+                setPromotions(new ArrayList<>());
+            }
+        });
     }
 }
