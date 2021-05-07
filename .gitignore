@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+app/schemas/com.example.schoolmanagystclient.AppDatabase/1.json
+
+.idea/misc.xml

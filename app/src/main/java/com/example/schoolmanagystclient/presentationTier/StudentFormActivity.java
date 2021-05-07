@@ -1,4 +1,4 @@
-package com.example.schoolmanagystclient;
+package com.example.schoolmanagystclient.presentationTier;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +8,9 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.schoolmanagystclient.R;
+import com.example.schoolmanagystclient.entities.Promotion;
+import com.example.schoolmanagystclient.entities.Student;
 import com.google.android.material.button.MaterialButton;
 
 public class StudentFormActivity extends AppCompatActivity
@@ -40,10 +43,13 @@ public class StudentFormActivity extends AppCompatActivity
         );
 
         //If promotionIndex is set, use it to locate the spinner default position
-        if(getIntent().hasExtra("promotionPosition"))
+        if(getIntent().hasExtra("promotionAcronym"))
         {
             boolean searching = true;
-            int promotionPosition = (int)getIntent().getLongExtra("promotionPosition", 0);
+            String promotionAcronym = getIntent().getStringExtra("promotionAcronym");
+            int promotionPosition = 0;
+
+            //Finding promotionPosition with promotionAcronym
 
             getPromotionSpinner().setSelection(promotionPosition);
         }
@@ -62,9 +68,9 @@ public class StudentFormActivity extends AppCompatActivity
 
                         Log.i(TAG, student + " shall be created now");
 
-                        MainActivity.getLogicInterface().getPromotions().get(
-                                getPromotionSpinner().getSelectedItemPosition()
-                        ).addStudent(student);
+                        String promotionAcronym = ((Promotion)getPromotionSpinner().getSelectedItem()).getAcronym();
+
+                        MainActivity.getLogicInterface().addStudent(student, promotionAcronym);
                     }
                 }
         );

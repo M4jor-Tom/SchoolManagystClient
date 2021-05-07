@@ -1,10 +1,11 @@
-package com.example.schoolmanagystclient;
+package com.example.schoolmanagystclient.presentationTier;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 abstract public class MyAdapter<Entity> extends BaseAdapter
@@ -15,6 +16,7 @@ abstract public class MyAdapter<Entity> extends BaseAdapter
     public MyAdapter(Context context, List<Entity> entities)
     {
         setContext(context);
+        setEntities(new ArrayList<>());
         setEntities(entities);
     }
 

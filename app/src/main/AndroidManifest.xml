@@ -2,14 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.schoolmanagystclient">
 
+    <!--android:usesCleartextTraffic="true"     ***VERSION 9, set in <application>***   -->
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolManagystClient">
-        <activity android:name=".MainActivity">
+        <activity android:name=".presentationTier.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,25 +19,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PromotionActivity"
+            android:name=".presentationTier.PromotionActivity"
             android:label="@string/PromotionActivityTitle">
 
         </activity>
 
         <activity
-            android:name=".PromotionFormActivity"
+            android:name=".presentationTier.PromotionFormActivity"
             android:label="@string/PromotionFormActivityTitle">
 
         </activity>
 
         <activity
-            android:name=".StudentActivity"
+            android:name=".presentationTier.StudentActivity"
             android:label="@string/StudentActivityTitle">
 
         </activity>
 
         <activity
-            android:name=".StudentFormActivity"
+            android:name=".presentationTier.StudentFormActivity"
             android:label="@string/StudentFormActivityTitle">
 
         </activity>

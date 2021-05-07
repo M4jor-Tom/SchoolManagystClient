@@ -1,14 +1,20 @@
 package com.example.schoolmanagystclient;
 
+import com.example.schoolmanagystclient.entities.Promotion;
+import com.example.schoolmanagystclient.entities.Student;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public interface LogicInterface
 {
+    public List<Promotion> getPromotions();
+    public Promotion getPromotion(String promotionAcronym);
+    public void setPromotions(List<Promotion> promotions);
     public void addPromotion(Promotion promotion);
 
-    public ArrayList<Student> getStudents();
-    public ArrayList<Promotion> getPromotions();
-
-    public ArrayList<Student> getStudents(long promotionId);
-    public ArrayList<Student> getStudents(String promotionAcronym);
+    public List<Student> getStudents();
+    public List<Student> getStudents(String promotionAcronym);
+    public void setStudents(List<Student> students);
+    public void addStudent(Student student, String promotionAcronym);
 }
