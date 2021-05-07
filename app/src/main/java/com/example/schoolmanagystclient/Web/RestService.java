@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestService
 {
-    private static final String TAG = "Logic";
+    private static final String TAG = "RestService";
 
     private static RestServiceInterface _restServiceInterface;
 
